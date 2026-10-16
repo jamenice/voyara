@@ -1,0 +1,17 @@
+/*
+Theme Name:        Voyara
+Theme URI:         https://jwsthemes.com/
+Author:            JWSThemes
+Author URI:        https://jwsthemes.com/
+Description:       Travel booking theme for hotels, tours, activities, rentals and cars. Listings, bookings and the Elementor widgets come from the Voyara Core plugin.
+Version:           0.1.0
+Requires at least: 7.0
+Tested up to:      7.0
+Requires PHP:      8.2
+License:           GNU General Public License v2 or later
+License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:       voyara
+Tags:              custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, e-commerce
+*/
+
+/* Styles live in assets/css/theme.css. This file holds the theme header only. */

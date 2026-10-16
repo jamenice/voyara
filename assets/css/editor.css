@@ -1,0 +1,4 @@
+/* Block editor: same fonts and colours as the front end. */
+body{font:400 17px/1.65 Jost,system-ui,sans-serif;color:#15201F}
+h1,h2,h3,h4{font-family:Marcellus,Georgia,serif;font-weight:400}
+a{color:#0E3B36}
