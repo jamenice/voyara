@@ -13,6 +13,11 @@ defined( 'ABSPATH' ) || exit;
 define( 'JWSTHEMES_VOYARA_THEME_VERSION', '0.1.0' );
 
 /*
+ * Admin page slug of Theme Options: Appearance > Theme Options.
+ */
+define( 'JWSTHEMES_VOYARA_OPTIONS_PAGE', 'voyara-options' );
+
+/*
  * Minimum PHP version. The product requirement is 8.3; it stays at 8.2 while the
  * local XAMPP stack runs PHP 8.2.4. Raise this and style.css before release.
  */
@@ -23,9 +28,15 @@ if ( version_compare( PHP_VERSION, JWSTHEMES_VOYARA_THEME_MIN_PHP, '<' ) ) {
 	return;
 }
 
+require get_template_directory() . '/inc/options.php';
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/brand.php';
 require get_template_directory() . '/inc/plugins.php';
+require get_template_directory() . '/inc/woocommerce.php';
+
+if ( is_admin() ) {
+	require get_template_directory() . '/inc/theme-options.php';
+}
 
 if ( ! function_exists( 'jwsthemes_voyara_setup' ) ) {
 	/**
@@ -110,6 +121,27 @@ function jwsthemes_voyara_scripts() {
 add_action( 'wp_enqueue_scripts', 'jwsthemes_voyara_scripts' );
 
 /**
+ * Preloads the Latin files of the bundled fonts chosen in Theme Options, so headings
+ * and text do not reflow when the font arrives.
+ */
+function jwsthemes_voyara_preload_fonts() {
+	$files = array(
+		'marcellus' => 'marcellus-latin.woff2',
+		'jost'      => 'jost-latin.woff2',
+	);
+	$used  = array_unique( array( jwsthemes_voyara_option( 'jwsthemes_font_heading' ), jwsthemes_voyara_option( 'jwsthemes_font_body' ) ) );
+	foreach ( $used as $font ) {
+		if ( isset( $files[ $font ] ) ) {
+			printf(
+				'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n",
+				esc_url( get_template_directory_uri() . '/assets/fonts/' . $files[ $font ] )
+			);
+		}
+	}
+}
+add_action( 'wp_head', 'jwsthemes_voyara_preload_fonts', 2 );
+
+/**
  * Bundled font faces.
  *
  * @return string CSS.
@@ -134,15 +166,35 @@ function jwsthemes_voyara_font_faces() {
 }
 
 /**
- * Body classes.
+ * Body classes for the sidebar, the sticky built-in header and the reading progress bar.
  *
  * @param string[] $classes Classes.
  * @return string[]
  */
 function jwsthemes_voyara_body_classes( $classes ) {
-	if ( is_active_sidebar( 'sidebar-1' ) && ( is_home() || is_singular( 'post' ) || is_archive() ) ) {
+	$side = jwsthemes_voyara_blog_sidebar();
+	if ( 'none' !== $side ) {
 		$classes[] = 'has-sidebar';
+		$classes[] = 'has-sidebar-' . $side;
+	}
+	if ( jwsthemes_voyara_option( 'jwsthemes_header_sticky' ) ) {
+		$classes[] = 'has-sticky-header';
+	}
+	if ( is_singular( 'post' ) && jwsthemes_voyara_option( 'jwsthemes_blog_progress' ) ) {
+		$classes[] = 'has-progress';
 	}
 	return $classes;
 }
 add_filter( 'body_class', 'jwsthemes_voyara_body_classes' );
+
+/**
+ * Block editor: the same fonts and colour variables as the front end.
+ *
+ * @param array $settings Editor settings.
+ * @return array
+ */
+function jwsthemes_voyara_editor_vars( $settings ) {
+	$settings['styles'][] = array( 'css' => jwsthemes_voyara_font_faces() . jwsthemes_voyara_brand_css() );
+	return $settings;
+}
+add_filter( 'block_editor_settings_all', 'jwsthemes_voyara_editor_vars' );

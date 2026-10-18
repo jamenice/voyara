@@ -1,7 +1,8 @@
 <?php
 /**
- * Site footer. Voyara Core prints the Theme Builder footer when one matches;
- * otherwise this fallback shows the footer menu and the copyright line.
+ * Site footer. Voyara Core prints the Theme Builder footer when one matches, or the
+ * default footer chosen in Theme Options; otherwise this fallback shows the footer
+ * menu, the social links and the copyright line from Theme Options > Footer.
  *
  * @package Voyara
  */
@@ -25,16 +26,8 @@ defined( 'ABSPATH' ) || exit;
 					?>
 				</nav>
 			<?php endif; ?>
-			<p class="vy-copy">
-				<?php
-				printf(
-					/* translators: 1: year, 2: site name. */
-					esc_html__( '© %1$s %2$s', 'voyara' ),
-					esc_html( wp_date( 'Y' ) ),
-					esc_html( get_bloginfo( 'name' ) )
-				);
-				?>
-			</p>
+			<?php jwsthemes_voyara_social_links(); ?>
+			<?php jwsthemes_voyara_copyright(); ?>
 		</div>
 	</footer>
 <?php endif; ?>

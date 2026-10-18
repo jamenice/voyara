@@ -1,11 +1,15 @@
 <?php
 /**
- * Post list for the blog, archives and search.
+ * Post list for the blog, archives and search. Card style and sidebar come from
+ * Theme Options > Blog.
  *
  * @package Voyara
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$jwsthemes_voyara_side   = jwsthemes_voyara_blog_sidebar();
+$jwsthemes_voyara_layout = 'list' === jwsthemes_voyara_option( 'jwsthemes_blog_layout' ) && ! is_search() ? 'vy-grid vy-grid--list' : 'vy-grid';
 ?>
 <section class="vy-wrap vy-archive">
 	<header class="vy-archive__head">
@@ -25,7 +29,7 @@ defined( 'ABSPATH' ) || exit;
 		?>
 	</header>
 	<div class="vy-archive__body">
-		<div class="vy-grid">
+		<div class="<?php echo esc_attr( $jwsthemes_voyara_layout ); ?>">
 			<?php
 			if ( have_posts() ) :
 				while ( have_posts() ) :
@@ -44,7 +48,7 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 		<?php jwsthemes_voyara_pagination(); ?>
 	</div>
-	<?php if ( is_active_sidebar( 'sidebar-1' ) && ! is_search() ) : ?>
+	<?php if ( 'none' !== $jwsthemes_voyara_side ) : ?>
 		<aside class="vy-sidebar" aria-label="<?php esc_attr_e( 'Sidebar', 'voyara' ); ?>">
 			<?php dynamic_sidebar( 'sidebar-1' ); ?>
 		</aside>

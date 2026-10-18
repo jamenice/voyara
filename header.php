@@ -1,7 +1,8 @@
 <?php
 /**
- * Site header. Voyara Core prints the Theme Builder header when one matches;
- * otherwise this fallback shows the logo and the primary menu.
+ * Site header. Voyara Core prints the Theme Builder header when one matches, or the
+ * default header chosen in Theme Options; otherwise this fallback shows the logo, the
+ * primary menu, and the phone number and button from Theme Options > Header.
  *
  * @package Voyara
  */
@@ -18,10 +19,13 @@ defined( 'ABSPATH' ) || exit;
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <a class="vy-skip" href="#vy-main"><?php esc_html_e( 'Skip to content', 'voyara' ); ?></a>
+<?php if ( is_singular( 'post' ) && jwsthemes_voyara_option( 'jwsthemes_blog_progress' ) ) : ?>
+	<div class="vy-progress" aria-hidden="true"><span class="vy-progress__bar"></span></div>
+<?php endif; ?>
 <?php if ( ! jwsthemes_voyara_render_location( 'header' ) ) : ?>
 	<header class="vy-header">
 		<div class="vy-wrap vy-header__bar">
-			<?php jwsthemes_voyara_logo(); ?>
+			<?php jwsthemes_voyara_logo( 'dark' ); ?>
 			<?php if ( has_nav_menu( 'primary' ) ) : ?>
 				<button type="button" class="vy-menu-toggle" aria-controls="vy-primary-menu" aria-expanded="false">
 					<span class="vy-menu-toggle__bars" aria-hidden="true"></span>
@@ -40,6 +44,7 @@ defined( 'ABSPATH' ) || exit;
 					?>
 				</nav>
 			<?php endif; ?>
+			<?php jwsthemes_voyara_header_actions(); ?>
 		</div>
 	</header>
 <?php endif; ?>

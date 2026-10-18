@@ -1,4 +1,4 @@
-/* Block editor: same fonts and colours as the front end. */
-body{font:400 17px/1.65 Jost,system-ui,sans-serif;color:#15201F}
-h1,h2,h3,h4{font-family:Marcellus,Georgia,serif;font-weight:400}
-a{color:#0E3B36}
+/* Block editor: same fonts and colours as the front end. Variables come from Theme Options. */
+body{font:400 var(--vy-font-size,17px)/1.65 var(--vy-font-body,Jost,system-ui,sans-serif);color:var(--vy-ink-2,#2C3534)}
+h1,h2,h3,h4{font-family:var(--vy-font-heading,Marcellus,Georgia,serif);font-weight:400;color:var(--vy-ink,#15201F)}
+a{color:var(--vy-main,#0E3B36)}
