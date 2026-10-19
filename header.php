@@ -1,8 +1,8 @@
 <?php
 /**
  * Site header. Voyara Core prints the Theme Builder header when one matches, or the
- * default header chosen in Theme Options; otherwise this fallback shows the logo, the
- * primary menu, and the phone number and button from Theme Options > Header.
+ * default header chosen in Voyara > Settings; otherwise this fallback shows the logo, the
+ * primary menu, and the phone number and button from Voyara > Settings > Header.
  *
  * @package Voyara
  */

@@ -1,7 +1,7 @@
 <?php
 /**
  * Not found. Voyara Core prints the Theme Builder 404 template when one matches;
- * otherwise the title, text, image and button come from Theme Options > 404 page.
+ * otherwise the title, text, image and button come from Voyara > Settings > 404 page.
  *
  * @package Voyara
  */

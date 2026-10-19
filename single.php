@@ -2,7 +2,7 @@
 /**
  * Single post and single listing. Voyara Core prints the Theme Builder single
  * template when one matches; otherwise the post content shows here, with the
- * sidebar, author box and related posts set in Theme Options > Blog.
+ * sidebar, author box and related posts set in Voyara > Settings > Blog.
  *
  * @package Voyara
  */

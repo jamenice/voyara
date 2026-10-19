@@ -1,15 +1,15 @@
 <?php
 /**
- * Theme Options values.
+ * Theme settings values.
  *
- * Every option is a theme mod named `jwsthemes_*`. Theme Options (Redux, see
- * inc/theme-options.php) saves them with the `theme_mods_expanded` database mode, the
- * Voyara Console setup wizard writes the brand colours, logo and map provider, and the
- * demo importer and exporter move them between sites. Templates read them through
- * jwsthemes_voyara_option(), so the theme works the same when Redux is not active.
+ * Every setting is a theme mod named `jwsthemes_*`. Voyara > Settings (Voyara Core)
+ * shows and saves them through inc/settings.php, the Voyara Console setup wizard
+ * writes the brand colours, logo and map provider, and the demo importer and exporter
+ * move them between sites. Templates read them through jwsthemes_voyara_option(), so
+ * the theme works the same when Voyara Core is not active.
  *
  * Two values stay where WordPress keeps them: the light logo is the `custom_logo` theme
- * mod and the favicon is the `site_icon` option. Theme Options shows and saves both.
+ * mod and the favicon is the `site_icon` option.
  *
  * @package Voyara
  */
@@ -84,8 +84,8 @@ function jwsthemes_voyara_option_defaults() {
 /**
  * One option value, or its default.
  *
- * Redux saves a switch as '1' or '0', a slider as a string and an empty text field as
- * '', so the saved value is cast to the type of the default. An empty value falls
+ * Older sites saved a switch as '1' or '0' and a number as a string, and an empty
+ * text field is saved as '', so the saved value is cast to the type of the default. An empty value falls
  * back to the default for text that must not be blank (colours, fonts, URLs with a
  * default), and stays empty for text a buyer may clear (phone, CTA, social links).
  *
@@ -145,7 +145,7 @@ function jwsthemes_voyara_required_text() {
 }
 
 /**
- * Attachment id of a media option (Redux saves media as an array with an id).
+ * Attachment id of a media option (saved as an array with an id and a url).
  *
  * @param string $id Option id.
  * @return int
@@ -185,7 +185,7 @@ function jwsthemes_voyara_fonts() {
 }
 
 /**
- * Moves values saved before Theme Options existed to the option ids above.
+ * Moves values saved by older versions to the option ids above.
  *
  * Runs once per site. The setup wizard used to save the colours as one array
  * (`jwsthemes_brand_colors`) and one map key for whichever provider was chosen
@@ -227,19 +227,7 @@ function jwsthemes_voyara_migrate_options() {
 add_action( 'after_setup_theme', 'jwsthemes_voyara_migrate_options', 20 );
 
 /**
- * Theme Options URL for Voyara Console (Console > Settings, the setup wizard and the
- * header menu link to it). Empty while Redux is not active.
- *
- * @param string $url URL.
- * @return string
- */
-function jwsthemes_voyara_theme_options_url( $url ) {
-	return class_exists( 'Redux' ) ? admin_url( 'themes.php?page=' . JWSTHEMES_VOYARA_OPTIONS_PAGE ) : $url;
-}
-add_filter( 'jwsthemes_voyara_theme_options_url', 'jwsthemes_voyara_theme_options_url' );
-
-/**
- * Default header and footer from Theme Options, used when no Theme Builder template
+ * Default header and footer from Voyara > Settings, used when no Theme Builder template
  * matches the page by its display conditions.
  *
  * Order: a per-page override, then display conditions, then this default, then the

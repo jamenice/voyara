@@ -21,7 +21,7 @@
 } )();
 
 /**
- * Reading progress bar on posts (Theme Options > Blog > Reading progress bar).
+ * Reading progress bar on posts (Voyara > Settings > Blog > Reading progress bar).
  */
 ( function () {
 	const bar = document.querySelector( '.vy-progress__bar' );

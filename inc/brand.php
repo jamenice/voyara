@@ -1,9 +1,9 @@
 <?php
 /**
- * Colours, fonts and page width from Theme Options, printed as CSS custom properties.
+ * Colours, fonts and page width from Voyara > Settings, printed as CSS custom properties.
  *
  * Every colour in the theme, the Voyara Core widgets and Voyara Console reads a
- * `--vy-*` variable, so changing a colour in Theme Options changes the whole site.
+ * `--vy-*` variable, so changing a colour in Voyara > Settings changes the whole site.
  * Hover colours are mixed in CSS (assets/css/theme.css), and the text colour on the
  * main and accent colours is picked here for contrast.
  *
@@ -86,7 +86,7 @@ function jwsthemes_voyara_text_on( $background ) {
 }
 
 /**
- * The :root block with every variable from Theme Options.
+ * The :root block with every variable from Voyara > Settings.
  *
  * A colour saved as something other than a hex colour is left out, so the CSS uses
  * the fallback value written next to each var() call.

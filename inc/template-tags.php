@@ -25,7 +25,7 @@ function jwsthemes_voyara_render_location( $location ) {
  * Site logo, or the site name when no logo is set.
  *
  * The light logo is the Site Logo (`custom_logo`). On a dark background the logo for
- * dark backgrounds from Theme Options is used when one is set.
+ * dark backgrounds from Voyara > Settings is used when one is set.
  *
  * @param string $background light or dark.
  */
@@ -59,7 +59,7 @@ function jwsthemes_voyara_logo( $background = 'light' ) {
 }
 
 /**
- * Phone number and button from Theme Options > Header.
+ * Phone number and button from Voyara > Settings > Header.
  */
 function jwsthemes_voyara_header_actions() {
 	$phone = jwsthemes_voyara_option( 'jwsthemes_header_phone' );
@@ -101,7 +101,7 @@ function jwsthemes_voyara_copyright_html() {
 }
 
 /**
- * Copyright line from Theme Options > Footer, with {year} and {site} filled in.
+ * Copyright line from Voyara > Settings > Footer, with {year} and {site} filled in.
  */
 function jwsthemes_voyara_copyright() {
 	$text = strtr(
@@ -118,7 +118,7 @@ function jwsthemes_voyara_copyright() {
 }
 
 /**
- * Social networks offered in Theme Options > Footer.
+ * Social networks offered in Voyara > Settings > Footer.
  *
  * @return array<string,string>
  */
@@ -133,7 +133,7 @@ function jwsthemes_voyara_social_networks() {
 }
 
 /**
- * Social links from Theme Options > Footer.
+ * Social links from Voyara > Settings > Footer.
  */
 function jwsthemes_voyara_social_links() {
 	$links = array();

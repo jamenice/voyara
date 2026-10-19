@@ -1,8 +1,8 @@
 <?php
 /**
  * Site footer. Voyara Core prints the Theme Builder footer when one matches, or the
- * default footer chosen in Theme Options; otherwise this fallback shows the footer
- * menu, the social links and the copyright line from Theme Options > Footer.
+ * default footer chosen in Voyara > Settings; otherwise this fallback shows the footer
+ * menu, the social links and the copyright line from Voyara > Settings > Footer.
  *
  * @package Voyara
  */

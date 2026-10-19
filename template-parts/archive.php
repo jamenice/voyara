@@ -1,7 +1,7 @@
 <?php
 /**
  * Post list for the blog, archives and search. Card style and sidebar come from
- * Theme Options > Blog.
+ * Voyara > Settings > Blog.
  *
  * @package Voyara
  */

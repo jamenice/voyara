@@ -1,4 +1,4 @@
-/* Voyara theme. Colours, fonts and the container width come from Theme Options as --vy-* custom properties (inc/brand.php); the values below are the defaults. */
+/* Voyara theme. Colours, fonts and the container width come from Voyara > Settings as --vy-* custom properties (inc/brand.php); the values below are the defaults. */
 :root{
 --vy-main:#0E3B36;--vy-on-main:#FFFFFF;--vy-accent:#C9962B;--vy-on-accent:#000000;
 --vy-ink:#15201F;--vy-ink-2:#2C3534;--vy-muted:#5C6664;--vy-line:#E6E1D8;--vy-sand:#F3EEE4;--vy-cream:#FBF9F5;--vy-bg:#FFFFFF;--vy-dark:#15201F;
@@ -92,7 +92,7 @@ input:focus,textarea:focus{border-color:var(--vy-main)}
 .vy-footer a:hover{color:var(--vy-accent)}
 .vy-copy{margin:0;font-size:14px}
 
-/* Header phone and button, from Theme Options > Header */
+/* Header phone and button, from Voyara > Settings > Header */
 .vy-header__actions{display:flex;align-items:center;gap:16px;flex:0 0 auto}
 .vy-header__phone{color:var(--vy-on-main);text-decoration:none;font-weight:500;white-space:nowrap;transition:color .2s ease}
 .vy-header__phone:hover{color:var(--vy-on-main);text-decoration:underline}

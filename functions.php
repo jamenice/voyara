@@ -13,7 +13,8 @@ defined( 'ABSPATH' ) || exit;
 define( 'JWSTHEMES_VOYARA_THEME_VERSION', '0.1.0' );
 
 /*
- * Admin page slug of Theme Options: Appearance > Theme Options.
+ * Admin page slug of the former Voyara > Settings screen. Its address now
+ * opens Voyara > Settings (inc/settings.php).
  */
 define( 'JWSTHEMES_VOYARA_OPTIONS_PAGE', 'voyara-options' );
 
@@ -34,9 +35,7 @@ require get_template_directory() . '/inc/brand.php';
 require get_template_directory() . '/inc/plugins.php';
 require get_template_directory() . '/inc/woocommerce.php';
 
-if ( is_admin() ) {
-	require get_template_directory() . '/inc/theme-options.php';
-}
+require get_template_directory() . '/inc/settings.php';
 
 if ( ! function_exists( 'jwsthemes_voyara_setup' ) ) {
 	/**
@@ -121,7 +120,7 @@ function jwsthemes_voyara_scripts() {
 add_action( 'wp_enqueue_scripts', 'jwsthemes_voyara_scripts' );
 
 /**
- * Preloads the Latin files of the bundled fonts chosen in Theme Options, so headings
+ * Preloads the Latin files of the bundled fonts chosen in Voyara > Settings, so headings
  * and text do not reflow when the font arrives.
  */
 function jwsthemes_voyara_preload_fonts() {
