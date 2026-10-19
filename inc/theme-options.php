@@ -101,6 +101,13 @@ function jwsthemes_voyara_register_theme_options() {
 					'step'          => 2,
 					'display_value' => 'text',
 				),
+				array(
+					'id'       => 'jwsthemes_motion',
+					'type'     => 'switch',
+					'title'    => __( 'Scroll animations', 'voyara' ),
+					'subtitle' => __( 'Page sections and cards fade in and rise a little as they scroll into view. Visitors who turn motion off in their device settings never see them.', 'voyara' ),
+					'default'  => $d['jwsthemes_motion'],
+				),
 			),
 		)
 	);

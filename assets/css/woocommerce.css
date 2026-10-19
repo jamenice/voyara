@@ -4,7 +4,7 @@
 .vy-wchero{background:var(--vy-sand)}
 .vy-wchero__in{display:flex;flex-direction:column;gap:12px;padding-top:56px;padding-bottom:56px}
 .vy-wchero__crumbs{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--vy-muted)}
-.vy-wchero__crumbs a{color:var(--vy-muted);text-decoration:none}
+.vy-wchero__crumbs a{color:var(--vy-muted);text-decoration:none;transition:color .2s ease}
 .vy-wchero__crumbs a:hover{color:var(--vy-main);text-decoration:underline}
 .vy-wchero__crumbs [aria-current]{color:var(--vy-ink)}
 .vy-wchero__title{margin:0;font-size:clamp(34px,5vw,52px);line-height:1.05}
@@ -14,7 +14,7 @@
 .vy-wchero__step.is-done,.vy-wchero__step.is-now{color:var(--vy-ink)}
 .vy-wchero__num{width:26px;height:26px;border-radius:999px;border:1px solid currentColor;display:inline-flex;align-items:center;justify-content:center;font-size:13px;line-height:1;text-decoration:none;color:inherit}
 .vy-wchero__step.is-now .vy-wchero__num,.vy-wchero__step.is-done .vy-wchero__num{background:var(--vy-main);border-color:var(--vy-main);color:var(--vy-on-main)}
-a.vy-wchero__num:hover{color:var(--vy-on-main);filter:brightness(1.1)}
+a.vy-wchero__num{transition:color .2s ease,filter .2s ease}a.vy-wchero__num:hover{color:var(--vy-on-main);filter:brightness(1.1)}
 @media (max-width:640px){.vy-wchero__in{padding-top:36px;padding-bottom:36px}.vy-wchero__step+.vy-wchero__step::before{width:16px}}
 
 .vy-wcpage{max-width:calc(var(--vy-container) + 2 * var(--vy-gutter));padding-top:36px;padding-bottom:72px}
@@ -30,10 +30,10 @@ a.vy-wchero__num:hover{color:var(--vy-on-main);filter:brightness(1.1)}
 .vy-wcpage .woocommerce-info a,.vy-wcpage .showcoupon,.vy-wcpage .showlogin{color:var(--vy-main);font-weight:500}
 
 /* Buttons and fields */
-.vy-wcpage .woocommerce a.button,.vy-wcpage .woocommerce button.button,.vy-wcpage .woocommerce input.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border:1px solid var(--vy-ink);border-radius:999px;background:var(--vy-bg);color:var(--vy-ink);font:500 15px/1 var(--vy-font-body);text-decoration:none}
+.vy-wcpage .woocommerce a.button,.vy-wcpage .woocommerce button.button,.vy-wcpage .woocommerce input.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border:1px solid var(--vy-ink);border-radius:999px;background:var(--vy-bg);color:var(--vy-ink);font:500 15px/1 var(--vy-font-body);text-decoration:none;transition:color .2s ease,background-color .2s ease}
 .vy-wcpage .woocommerce a.button:hover,.vy-wcpage .woocommerce button.button:hover{background:var(--vy-sand);color:var(--vy-ink)}
 .vy-wcpage .woocommerce button.button:disabled,.vy-wcpage .woocommerce button.button:disabled[disabled]{padding:0 22px;border-color:var(--vy-line);background:var(--vy-bg);color:var(--vy-muted);opacity:.7}
-.vy-wcpage .woocommerce a.button.alt,.vy-wcpage .woocommerce button.button.alt,.vy-wcpage .woocommerce #place_order{min-height:54px;border:0;background:var(--vy-main);color:var(--vy-on-main);font-size:16px}
+.vy-wcpage .woocommerce a.button.alt,.vy-wcpage .woocommerce button.button.alt,.vy-wcpage .woocommerce #place_order{min-height:54px;border:0;background:var(--vy-main);color:var(--vy-on-main);font-size:16px;transition:color .2s ease,background-color .2s ease}
 .vy-wcpage .woocommerce a.button.alt:hover,.vy-wcpage .woocommerce button.button.alt:hover{background:var(--vy-main-hover);color:var(--vy-on-main)}
 .vy-wcpage .woocommerce a.button:focus-visible,.vy-wcpage .woocommerce button.button:focus-visible{outline:2px solid var(--vy-accent);outline-offset:2px}
 .vy-wcpage .woocommerce form .form-row{margin:0 0 14px;padding:0}
@@ -56,7 +56,7 @@ a.vy-wchero__num:hover{color:var(--vy-on-main);filter:brightness(1.1)}
 .vy-wcpage table.shop_table td{padding:20px 12px;border:0;border-top:0;border-bottom:1px solid var(--vy-line);vertical-align:middle}
 .vy-wcpage table.cart td.product-thumbnail{width:134px;padding-left:0}
 .vy-wcpage table.cart img{display:block;width:110px!important;height:88px;border-radius:14px;object-fit:cover}
-.vy-wcpage table.cart td.product-name>a{font-size:18px;font-weight:500;color:var(--vy-ink);text-decoration:none;line-height:1.3}
+.vy-wcpage table.cart td.product-name>a{font-size:18px;font-weight:500;color:var(--vy-ink);text-decoration:none;line-height:1.3;transition:color .2s ease}
 .vy-wcpage table.cart td.product-name>a:hover{color:var(--vy-main);text-decoration:underline}
 .vy-cart-kind{display:block;margin-bottom:4px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--vy-accent)}
 .vy-wcpage dl.variation{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1px 6px;margin:6px 0 0;font-size:13px;line-height:1.5;color:var(--vy-muted)}
@@ -67,7 +67,7 @@ a.vy-wchero__num:hover{color:var(--vy-on-main);filter:brightness(1.1)}
 .vy-wcpage table.cart td.product-subtotal{text-align:right}
 .vy-wcpage table.cart th.product-subtotal{text-align:right}
 .vy-wcpage table.cart td.product-remove{width:48px;padding-right:0;text-align:right}
-.vy-wcpage table.cart a.remove{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:999px;background:var(--vy-sand);color:var(--vy-ink)!important;font-size:20px;font-weight:400}
+.vy-wcpage table.cart a.remove{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:999px;background:var(--vy-sand);color:var(--vy-ink)!important;font-size:20px;font-weight:400;transition:color .2s ease,background-color .2s ease}
 .vy-wcpage table.cart a.remove:hover{background:var(--vy-bad);color:#fff!important}
 .vy-cart-qty{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;border:1px solid var(--vy-line);border-radius:999px;font-weight:500}
 .vy-wcpage table.cart td.actions{padding:24px 0 0;border-bottom:0}
@@ -75,7 +75,7 @@ a.vy-wchero__num:hover{color:var(--vy-on-main);filter:brightness(1.1)}
 .vy-wcpage table.cart td.actions .coupon #coupon_code{width:220px;max-width:100%;border-radius:999px;margin:0}
 .vy-wcpage table.cart td.actions>.button{float:right}
 .vy-wcpage--cart .cart-collaterals{width:auto;min-width:0}
-.vy-wcpage--cart .cart-collaterals .cart_totals{float:none;width:auto;position:sticky;top:24px;padding:28px;border:1px solid var(--vy-line);border-radius:24px;background:var(--vy-cream)}
+.vy-wcpage--cart .cart-collaterals .cart_totals{float:none;width:auto;position:sticky;top:calc(24px + var(--vy-head-offset,0px) + var(--wp-admin--admin-bar--height,0px));transition:top .3s ease;padding:28px;border:1px solid var(--vy-line);border-radius:24px;background:var(--vy-cream)}
 .vy-wcpage .cart_totals h2{margin:0 0 16px;font-size:28px}
 .vy-wcpage .cart_totals table.shop_table th,.vy-wcpage .cart_totals table.shop_table td{padding:12px 0;font-size:15px;text-transform:none;letter-spacing:0;color:var(--vy-ink);font-weight:400}
 .vy-wcpage .cart_totals table.shop_table td{text-align:right;font-family:var(--vy-font-heading);font-size:17px}
@@ -126,6 +126,24 @@ a.vy-wchero__num:hover{color:var(--vy-on-main);filter:brightness(1.1)}
 .vy-wcpage #order_review tfoot .order-total th{font-size:17px;font-weight:500}
 .vy-wcpage #order_review tfoot .order-total td{font-size:26px;color:var(--vy-main);border-bottom:0}
 .vy-wcpage #order_review tfoot .order-total td strong{font-weight:400}
+.vy-wcpage #order_review tfoot .order-total th{border-bottom:0}
+/* Order summary lines (woocommerce/checkout/review-order.php): photo, name, short booking lines. */
+.vy-wcpage #order_review table.shop_table td.product-name,.vy-wcpage #order_review table.shop_table td.product-total{vertical-align:top;padding-top:16px;padding-bottom:16px}
+.vy-wcpage #order_review td.product-total{white-space:nowrap;padding-left:12px}
+.vy-oitem{display:flex;gap:14px;align-items:flex-start;min-width:0}
+.vy-oitem__photo{flex:0 0 auto;width:56px;height:56px;border-radius:12px;overflow:hidden;background:var(--vy-sand,#F3EEE4)}
+.vy-oitem__photo img{display:block;width:100%;height:100%;object-fit:cover;margin:0}
+.vy-oitem__body{display:flex;flex-direction:column;gap:2px;min-width:0}
+.vy-oitem__name{font-size:15px;line-height:1.3;font-weight:500;color:var(--vy-ink)}
+.vy-oitem__name a{color:inherit;text-decoration:none}
+.vy-oitem__line{font-size:13px;line-height:1.45;font-weight:400;color:var(--vy-muted)}
+.vy-oitem__body dl.variation{margin:2px 0 0;font-weight:400}
+.vy-oitem__remove{align-self:flex-start;margin-top:4px;padding:2px 0;font-size:13px;font-weight:400;color:var(--vy-muted);text-decoration:underline;text-underline-offset:3px;transition:color .2s ease}
+.vy-oitem__remove:hover{color:var(--vy-ink)}
+.vy-oitem__remove:focus-visible{outline:2px solid var(--vy-accent);outline-offset:2px;border-radius:4px}
+.vy-wcpage #order_review tr.is-removing{opacity:.45;pointer-events:none;transition:opacity .2s ease}
+/* The Subtotal heading sits over the amounts, which are right aligned. */
+.vy-wcpage #order_review table.shop_table thead th.product-total{text-align:right}
 .vy-wcpage #payment{margin-top:18px;border-radius:18px;background:var(--vy-bg);border:1px solid var(--vy-line)}
 .vy-wcpage #payment ul.payment_methods{padding:18px 18px 4px;border-bottom:1px solid var(--vy-line)}
 .vy-wcpage #payment ul.payment_methods li{margin:0 0 12px;line-height:1.4}
@@ -165,7 +183,7 @@ a.vy-wchero__num:hover{color:var(--vy-on-main);filter:brightness(1.1)}
 .vy-wcpage ul.woocommerce-order-overview::before,.vy-wcpage ul.woocommerce-order-overview::after{display:none}
 .vy-wcpage ul.woocommerce-order-overview li:last-child{border:1px solid var(--vy-line)}
 .vy-wcpage table.shop_table tfoot th{text-transform:none;letter-spacing:0;font-size:15px;font-weight:500;color:var(--vy-ink)}
-@media (min-width:1101px){.vy-wcpage form.checkout #order_review{position:sticky;top:24px}}
+@media (min-width:1101px){.vy-wcpage form.checkout #order_review{position:sticky;top:calc(24px + var(--vy-head-offset,0px) + var(--wp-admin--admin-bar--height,0px));transition:top .3s ease}}
 /* My account: login and register */
 .vy-wcpage--login{padding-top:48px;padding-bottom:48px}
 .vy-login{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:stretch}
@@ -196,15 +214,32 @@ a.vy-wchero__num:hover{color:var(--vy-on-main);filter:brightness(1.1)}
 .woocommerce .vy-login form.woocommerce-form-login__rememberme{display:inline-flex;align-items:center;gap:8px;font-weight:400!important;color:var(--vy-muted)!important}
 .woocommerce .vy-login form.woocommerce-form-login__rememberme input{width:18px;height:18px;margin:0;accent-color:var(--vy-main)}
 .vy-login__lost{font-size:14px;color:var(--vy-main)}
-.woocommerce .vy-login form.woocommerce-form .button{width:100%;height:52px;margin:0;padding:0 24px;border:0;border-radius:999px;background:var(--vy-main);color:var(--vy-on-main);font:500 16px var(--vy-font-body);cursor:pointer}
+.woocommerce .vy-login form.woocommerce-form .button{width:100%;height:52px;margin:0;padding:0 24px;border:0;border-radius:999px;background:var(--vy-main);color:var(--vy-on-main);font:500 16px var(--vy-font-body);cursor:pointer;transition:color .2s ease,background-color .2s ease}
 .woocommerce .vy-login form.woocommerce-form .button:hover{background:var(--vy-main-hover,var(--vy-main));color:var(--vy-on-main)}
 .vy-login__roles{display:flex;flex-direction:column;gap:8px}
 .vy-login__label{font-size:14px;font-weight:500;color:var(--vy-ink)}
 .vy-login__role-row{display:flex;gap:8px}
 .vy-login__role{flex:1 1 0;min-width:0;display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 14px;border:1px solid var(--vy-line);border-radius:12px;font-size:15px;font-weight:500;color:var(--vy-ink);text-decoration:none}
 .vy-login__role.is-on{border-color:var(--vy-main);box-shadow:0 0 0 1px var(--vy-main);color:var(--vy-main)}
-a.vy-login__role:hover{border-color:var(--vy-ink);color:var(--vy-ink)}
+a.vy-login__role{transition:color .2s ease,border-color .2s ease}a.vy-login__role:hover{border-color:var(--vy-ink);color:var(--vy-ink)}
+/* Lost and reset password screens: a way back, a lead line, and on "Check your email" an icon and a button. */
+.vy-login__back{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-size:14px;font-weight:500;color:var(--vy-muted);text-decoration:none;transition:color .2s ease}
+.vy-login__back:hover{color:var(--vy-ink)}
+.vy-login__lead{margin:-4px 0 4px;font-size:16px;line-height:1.6;color:var(--vy-muted)}
+.vy-login__icon{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:16px;background:var(--vy-sand);color:var(--vy-main)}
+.vy-login__actions{display:flex;flex-direction:column;gap:16px}
+.vy-login__btn{display:inline-flex;align-items:center;justify-content:center;width:100%;height:52px;padding:0 24px;border-radius:999px;background:var(--vy-main);color:var(--vy-on-main);font:500 16px var(--vy-font-body);text-decoration:none;transition:background-color .2s ease}
+.vy-login__btn:hover{background:var(--vy-main-hover,var(--vy-main));color:var(--vy-on-main)}
+.vy-login__note a{font-weight:500;color:var(--vy-main)}
+.woocommerce .vy-login .woocommerce-password-strength{margin-top:8px;padding:8px 12px;border-radius:10px;font-size:13px;font-weight:500;text-align:left}
+.woocommerce .vy-login .woocommerce-password-hint{display:block;margin-top:6px;font-size:13px;line-height:1.5;color:var(--vy-muted)}
 .vy-login__note,.vy-login .woocommerce-privacy-policy-text p{margin:0;font-size:14px;line-height:1.6;color:var(--vy-muted)}
 .vy-wcpage--login .woocommerce-error,.vy-wcpage--login .woocommerce-message,.vy-wcpage--login .woocommerce-info{max-width:none;margin:0 0 24px}
 @media (max-width:1100px){.vy-login{grid-template-columns:1fr;gap:32px}.vy-login__panel{min-height:280px}.vy-login__main{max-width:none}}
 @media (max-width:640px){.vy-wcpage--login{padding-top:24px}.vy-login__panel{min-height:220px;border-radius:22px}.vy-login__ptext{left:22px;right:22px;bottom:22px}.vy-login__ptitle{font-size:26px}.vy-login__title{font-size:32px}}
+/* Checkout notices: WooCommerce puts the Place order errors at the top of the form; they
+   take the first row across both columns, above the details and the order summary. On
+   narrow screens the summary follows the details instead of covering them. */
+.vy-wcpage form.checkout>.woocommerce-NoticeGroup{grid-column:1/-1;grid-row:1;margin-bottom:0}
+@media (min-width:1101px){.vy-wcpage form.checkout:has(>.woocommerce-NoticeGroup) #customer_details,.vy-wcpage form.checkout:has(>.woocommerce-NoticeGroup) #order_review{grid-row:2}}
+@media (max-width:1100px){.vy-wcpage form.checkout #customer_details,.vy-wcpage form.checkout #order_review{grid-row:auto}.vy-wcpage form.checkout>.woocommerce-NoticeGroup{margin-bottom:20px}.vy-wcpage form.checkout #order_review{margin-top:28px}}

@@ -4,7 +4,7 @@
  *
  * Override of the WooCommerce template. The fields, hooks and nonces are those of
  * WooCommerce 9.9.0; only the layout changed. The photo is the featured image of the
- * My account page; the panel text can be changed with the
+ * page (the Sign in page, else My account); the panel text can be changed with the
  * `jwsthemes_voyara_login_panel` filter.
  *
  * @see     https://woocommerce.com/document/template-structure/
@@ -22,21 +22,7 @@ $jwsthemes_voyara_panel = jwsthemes_voyara_login_panel();
 do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 <div class="vy-login" id="customer_login">
-	<aside class="vy-login__panel">
-		<?php if ( $jwsthemes_voyara_panel['image'] ) : ?>
-			<?php echo wp_get_attachment_image( $jwsthemes_voyara_panel['image'], 'large', false, array( 'class' => 'vy-login__img', 'alt' => '' ) ); ?>
-		<?php endif; ?>
-		<span class="vy-login__shade" aria-hidden="true"></span>
-		<div class="vy-login__ptext">
-			<?php if ( '' !== $jwsthemes_voyara_panel['eyebrow'] ) : ?>
-				<span class="vy-login__eyebrow"><?php echo esc_html( $jwsthemes_voyara_panel['eyebrow'] ); ?></span>
-			<?php endif; ?>
-			<span class="vy-login__ptitle"><?php echo esc_html( $jwsthemes_voyara_panel['title'] ); ?></span>
-			<?php if ( '' !== $jwsthemes_voyara_panel['text'] ) : ?>
-				<span class="vy-login__plead"><?php echo esc_html( $jwsthemes_voyara_panel['text'] ); ?></span>
-			<?php endif; ?>
-		</div>
-	</aside>
+	<?php jwsthemes_voyara_login_aside( $jwsthemes_voyara_panel ); ?>
 
 	<div class="vy-login__main">
 		<?php if ( $jwsthemes_voyara_register ) : ?>

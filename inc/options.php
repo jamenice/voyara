@@ -26,6 +26,7 @@ function jwsthemes_voyara_option_defaults() {
 		// General.
 		'jwsthemes_logo_dark'          => array(),
 		'jwsthemes_container'          => 1366,
+		'jwsthemes_motion'             => true,
 		// Colours, see jwsthemes_voyara_color_vars().
 		'jwsthemes_color_main'         => '#0E3B36',
 		'jwsthemes_color_accent'       => '#C9962B',

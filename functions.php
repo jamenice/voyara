@@ -166,7 +166,8 @@ function jwsthemes_voyara_font_faces() {
 }
 
 /**
- * Body classes for the sidebar, the sticky built-in header and the reading progress bar.
+ * Body classes for the sidebar, the sticky built-in header, the reading progress bar and
+ * scroll animations turned off (vy-no-motion, read by the plugin's reveal.js).
  *
  * @param string[] $classes Classes.
  * @return string[]
@@ -182,6 +183,9 @@ function jwsthemes_voyara_body_classes( $classes ) {
 	}
 	if ( is_singular( 'post' ) && jwsthemes_voyara_option( 'jwsthemes_blog_progress' ) ) {
 		$classes[] = 'has-progress';
+	}
+	if ( ! jwsthemes_voyara_option( 'jwsthemes_motion' ) ) {
+		$classes[] = 'vy-no-motion';
 	}
 	return $classes;
 }

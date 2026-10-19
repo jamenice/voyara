@@ -110,12 +110,53 @@ function jwsthemes_voyara_wc_review_heading() {
 add_action( 'woocommerce_checkout_order_review', 'jwsthemes_voyara_wc_review_heading', 5 );
 
 /**
- * Photo panel beside the Sign in and Create account forms of the My account page.
+ * Address of the Sign in page (Voyara Console > Settings > Pages), else My account.
+ *
+ * @return string
+ */
+function jwsthemes_voyara_login_url() {
+	if ( class_exists( 'JWSThemes_Voyara_Dashboards' ) ) {
+		return JWSThemes_Voyara_Dashboards::login_url();
+	}
+	return function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'myaccount' ) : wp_login_url();
+}
+
+/**
+ * Photo panel of the sign in screens: Sign in, Create account, and the lost and reset
+ * password forms.
+ *
+ * @param array|null $panel Panel from jwsthemes_voyara_login_panel(); null to get it here.
+ */
+function jwsthemes_voyara_login_aside( $panel = null ) {
+	$panel = null === $panel ? jwsthemes_voyara_login_panel() : $panel;
+	?>
+	<aside class="vy-login__panel">
+		<?php if ( $panel['image'] ) : ?>
+			<?php echo wp_get_attachment_image( $panel['image'], 'large', false, array( 'class' => 'vy-login__img', 'alt' => '' ) ); ?>
+		<?php endif; ?>
+		<span class="vy-login__shade" aria-hidden="true"></span>
+		<div class="vy-login__ptext">
+			<?php if ( '' !== $panel['eyebrow'] ) : ?>
+				<span class="vy-login__eyebrow"><?php echo esc_html( $panel['eyebrow'] ); ?></span>
+			<?php endif; ?>
+			<span class="vy-login__ptitle"><?php echo esc_html( $panel['title'] ); ?></span>
+			<?php if ( '' !== $panel['text'] ) : ?>
+				<span class="vy-login__plead"><?php echo esc_html( $panel['text'] ); ?></span>
+			<?php endif; ?>
+		</div>
+	</aside>
+	<?php
+}
+
+/**
+ * Photo panel beside the Sign in and Create account forms (the Sign in page, or My account).
  *
  * @return array{image:int,eyebrow:string,title:string,text:string,partner:string}
  */
 function jwsthemes_voyara_login_panel() {
-	$page    = function_exists( 'wc_get_page_id' ) ? (int) wc_get_page_id( 'myaccount' ) : 0;
+	$account = function_exists( 'wc_get_page_id' ) ? (int) wc_get_page_id( 'myaccount' ) : 0;
+	// The featured image of the page showing the form, else the one of My account.
+	$page    = is_page() && has_post_thumbnail( get_queried_object_id() ) ? get_queried_object_id() : $account;
 	$partner = '';
 	if ( class_exists( 'JWSThemes_Voyara_Settings' ) && 'off' !== (string) JWSThemes_Voyara_Settings::value( 'partners', 'reg' ) ) {
 		$apply   = (int) JWSThemes_Voyara_Settings::value( 'pages', 'apply' );
@@ -124,8 +165,8 @@ function jwsthemes_voyara_login_panel() {
 	/**
 	 * Filters the photo panel of the login page.
 	 *
-	 * @param array $panel image (attachment id; default the featured image of the My
-	 *                     account page), eyebrow, title, text, and partner (the Become a
+	 * @param array $panel image (attachment id; default the featured image of the page,
+	 *                     else of My account), eyebrow, title, text, and partner (the Become a
 	 *                     partner page link behind "List my business"; empty hides the choice).
 	 */
 	return (array) apply_filters(
