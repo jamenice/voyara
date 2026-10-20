@@ -33,6 +33,8 @@ function jwsthemes_voyara_settings_schema() {
 	$colors = array(
 		'jwsthemes_color_main'    => array( __( 'Main color', 'voyara' ), __( 'Main buttons, links, the selected tab and the border of the field being typed in.', 'voyara' ) ),
 		'jwsthemes_color_accent'  => array( __( 'Accent color', 'voyara' ), __( 'Book now buttons, rating stars and highlight labels.', 'voyara' ) ),
+		'jwsthemes_color_label'   => array( __( 'Label color', 'voyara' ), __( 'Small capital labels above headings on light backgrounds. Use a colour that is easy to read on white.', 'voyara' ) ),
+		'jwsthemes_color_overlay' => array( __( 'Photo overlay color', 'voyara' ), __( 'Laid over hero photos and photo tiles so the white text on them stays easy to read.', 'voyara' ) ),
 		'jwsthemes_color_heading' => array( __( 'Heading color', 'voyara' ), __( 'Headings and main text.', 'voyara' ) ),
 		'jwsthemes_color_body'    => array( __( 'Body text color', 'voyara' ), __( 'Paragraph text.', 'voyara' ) ),
 		'jwsthemes_color_muted'   => array( __( 'Muted text color', 'voyara' ), __( 'Secondary text and notes.', 'voyara' ) ),
@@ -46,6 +48,19 @@ function jwsthemes_voyara_settings_schema() {
 	foreach ( $colors as $id => $labels ) {
 		/* translators: %s: default colour, for example #0E3B36. */
 		$color_fields[] = array( 'id' => $id, 'type' => 'color', 'label' => $labels[0], 'help' => $labels[1] . ' ' . sprintf( __( 'Default %s.', 'voyara' ), $d[ $id ] ) );
+		if ( 'jwsthemes_color_main' === $id ) {
+			$color_fields[] = array(
+				'id'      => 'jwsthemes_color_on_main',
+				'type'    => 'seg',
+				'label'   => __( 'Text on main color', 'voyara' ),
+				'help'    => __( 'Text on main buttons and the selected tab. Auto picks white when it is easy to read (4.5:1), otherwise black. Default Auto.', 'voyara' ),
+				'options' => array(
+					'auto'  => __( 'Auto', 'voyara' ),
+					'white' => __( 'White', 'voyara' ),
+					'black' => __( 'Black', 'voyara' ),
+				),
+			);
+		}
 	}
 
 	$social = array();
@@ -412,7 +427,7 @@ function jwsthemes_voyara_settings_save( array $changes, $save = true ) {
 			continue;
 		}
 		$clean[ $id ] = $checked;
-		if ( 'jwsthemes_color_main' === $id && jwsthemes_voyara_contrast( $checked, '#FFFFFF' ) < 4.5 ) {
+		if ( 'jwsthemes_color_main' === $id && 'auto' === ( $changes['jwsthemes_color_on_main'] ?? jwsthemes_voyara_option( 'jwsthemes_color_on_main' ) ) && jwsthemes_voyara_contrast( $checked, '#FFFFFF' ) < 4.5 ) {
 			$warnings[ $id ] = __( 'Main color is too light for white button text, so buttons use black text. Choose a darker colour to keep white text.', 'voyara' );
 		}
 	}

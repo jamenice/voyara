@@ -19,16 +19,18 @@ defined( 'ABSPATH' ) || exit;
  */
 function jwsthemes_voyara_color_vars() {
 	return array(
-		'--vy-main'   => 'jwsthemes_color_main',
-		'--vy-accent' => 'jwsthemes_color_accent',
-		'--vy-ink'    => 'jwsthemes_color_heading',
-		'--vy-ink-2'  => 'jwsthemes_color_body',
-		'--vy-muted'  => 'jwsthemes_color_muted',
-		'--vy-line'   => 'jwsthemes_color_border',
-		'--vy-sand'   => 'jwsthemes_color_soft',
-		'--vy-cream'  => 'jwsthemes_color_light',
-		'--vy-bg'     => 'jwsthemes_color_page',
-		'--vy-dark'   => 'jwsthemes_color_dark',
+		'--vy-main'    => 'jwsthemes_color_main',
+		'--vy-accent'  => 'jwsthemes_color_accent',
+		'--vy-label'   => 'jwsthemes_color_label',
+		'--vy-overlay' => 'jwsthemes_color_overlay',
+		'--vy-ink'     => 'jwsthemes_color_heading',
+		'--vy-ink-2'   => 'jwsthemes_color_body',
+		'--vy-muted'   => 'jwsthemes_color_muted',
+		'--vy-line'    => 'jwsthemes_color_border',
+		'--vy-sand'    => 'jwsthemes_color_soft',
+		'--vy-cream'   => 'jwsthemes_color_light',
+		'--vy-bg'      => 'jwsthemes_color_page',
+		'--vy-dark'    => 'jwsthemes_color_dark',
 	);
 }
 
@@ -86,6 +88,24 @@ function jwsthemes_voyara_text_on( $background ) {
 }
 
 /**
+ * A colour light enough for text on dark bands: the colour itself when it already is,
+ * otherwise mixed with white step by step until it is (relative luminance 0.58, about the default #E7C77F).
+ *
+ * @param string $hex #RRGGBB.
+ * @return string #RRGGBB.
+ */
+function jwsthemes_voyara_light( $hex ) {
+	$rgb = array_map( 'hexdec', str_split( ltrim( $hex, '#' ), 2 ) );
+	for ( $mix = 0; $mix <= 0.8; $mix += 0.05 ) {
+		$out = sprintf( '#%02X%02X%02X', ...array_map( static fn( $c ) => (int) round( $c + ( 255 - $c ) * $mix ), $rgb ) );
+		if ( jwsthemes_voyara_luminance( $out ) >= 0.58 ) {
+			break;
+		}
+	}
+	return $out;
+}
+
+/**
  * The :root block with every variable from Voyara > Settings.
  *
  * A colour saved as something other than a hex colour is left out, so the CSS uses
@@ -102,10 +122,12 @@ function jwsthemes_voyara_brand_css() {
 		}
 	}
 	if ( isset( $vars['--vy-main'] ) ) {
-		$vars['--vy-on-main'] = jwsthemes_voyara_text_on( $vars['--vy-main'] );
+		$on                   = jwsthemes_voyara_option( 'jwsthemes_color_on_main' );
+		$vars['--vy-on-main'] = 'white' === $on ? '#FFFFFF' : ( 'black' === $on ? '#000000' : jwsthemes_voyara_text_on( $vars['--vy-main'] ) );
 	}
 	if ( isset( $vars['--vy-accent'] ) ) {
-		$vars['--vy-on-accent'] = jwsthemes_voyara_text_on( $vars['--vy-accent'] );
+		$vars['--vy-on-accent']   = jwsthemes_voyara_text_on( $vars['--vy-accent'] );
+		$vars['--vy-accent-soft'] = jwsthemes_voyara_light( $vars['--vy-accent'] );
 	}
 
 	$fonts = jwsthemes_voyara_fonts();

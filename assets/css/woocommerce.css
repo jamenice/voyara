@@ -58,7 +58,7 @@ a.vy-wchero__num{transition:color .2s ease,filter .2s ease}a.vy-wchero__num:hove
 .vy-wcpage table.cart img{display:block;width:110px!important;height:88px;border-radius:14px;object-fit:cover}
 .vy-wcpage table.cart td.product-name>a{font-size:18px;font-weight:500;color:var(--vy-ink);text-decoration:none;line-height:1.3;transition:color .2s ease}
 .vy-wcpage table.cart td.product-name>a:hover{color:var(--vy-main);text-decoration:underline}
-.vy-cart-kind{display:block;margin-bottom:4px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--vy-accent)}
+.vy-cart-kind{display:block;margin-bottom:4px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--vy-label,var(--vy-accent))}
 .vy-wcpage dl.variation{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1px 6px;margin:6px 0 0;font-size:13px;line-height:1.5;color:var(--vy-muted)}
 .vy-wcpage dl.variation dt{margin:0;font-weight:400}
 .vy-wcpage dl.variation dd{margin:0;padding:0}
@@ -191,7 +191,7 @@ a.vy-wchero__num{transition:color .2s ease,filter .2s ease}a.vy-wchero__num:hove
 .vy-login .vy-login__img{max-width:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .vy-login__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,32,31,.1),rgba(21,32,31,.75))}
 .vy-login__ptext{position:absolute;left:36px;right:36px;bottom:36px;display:flex;flex-direction:column;gap:10px}
-.vy-login__eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--vy-accent)}
+.vy-login__eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--vy-label,var(--vy-accent))}
 .vy-login__ptitle{font-family:var(--vy-font-heading);font-size:36px;line-height:1.1}
 .vy-login__plead{font-size:15px;line-height:1.6;color:rgba(255,255,255,.85)}
 .vy-login__main{display:flex;flex-direction:column;justify-content:center;gap:20px;max-width:480px;width:100%}

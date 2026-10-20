@@ -29,7 +29,10 @@ function jwsthemes_voyara_option_defaults() {
 		'jwsthemes_motion'             => true,
 		// Colours, see jwsthemes_voyara_color_vars().
 		'jwsthemes_color_main'         => '#0E3B36',
+		'jwsthemes_color_on_main'      => 'auto',
 		'jwsthemes_color_accent'       => '#C9962B',
+		'jwsthemes_color_label'        => '#C9962B',
+		'jwsthemes_color_overlay'      => '#0E3B36',
 		'jwsthemes_color_heading'      => '#15201F',
 		'jwsthemes_color_body'         => '#2C3534',
 		'jwsthemes_color_muted'        => '#5C6664',
@@ -122,6 +125,8 @@ function jwsthemes_voyara_required_text() {
 	return array(
 		'jwsthemes_color_main',
 		'jwsthemes_color_accent',
+		'jwsthemes_color_label',
+		'jwsthemes_color_overlay',
 		'jwsthemes_color_heading',
 		'jwsthemes_color_body',
 		'jwsthemes_color_muted',
